@@ -1,7 +1,9 @@
 ﻿using static iiMenu.Menu.Main;
-using iiMenu.Classes;
+using iiMenu.Classes.Menu;
 using iiMenu.Mods;
 using UnityEngine;
+using iiMenu.Managers;
+using iiMenu.Menu;
 
 namespace StupidPlugin
 {
@@ -31,14 +33,14 @@ namespace StupidPlugin
         {
             LogManager.Log("Plugin " + Name + " has been enabled!");
 
-            int category = AddCategory("Plugin Mods");
-            AddButton(GetCategory("Main"), new ButtonInfo { buttonText = "Plugin Mods", method =() => currentCategoryIndex = category, isTogglable = false, toolTip = "Brings you to a category for plugins." });
+            int category = Buttons.AddCategory("Plugin Mods");
+            Buttons.AddButton(Buttons.GetCategory("Main"), new ButtonInfo { buttonText = "Plugin Mods", method =() => Buttons.CurrentCategoryIndex = category, isTogglable = false, toolTip = "Brings you to a category for plugins." });
 
-            AddButtons(
+            Buttons.AddButtons(
                 category,
                 new ButtonInfo[]
                 {
-                    new ButtonInfo { buttonText = "Exit Plugin Mods", method =() => currentCategoryName = "Main", isTogglable = false, toolTip = "Returns you back to the main page." },
+                    new ButtonInfo { buttonText = "Exit Plugin Mods", method =() => Buttons.CurrentCategoryName = "Main", isTogglable = false, toolTip = "Returns you back to the main page." },
                     new ButtonInfo { buttonText = "Right Trigger Fly <color=grey>[</color><color=green>RT</color><color=grey>]</color>", method = () => RightTriggerFly(), toolTip = "Returns you back to the main page." }
                 }
             );
@@ -50,8 +52,8 @@ namespace StupidPlugin
         {
             LogManager.Log("Plugin " + Name + " has been disabled!");
 
-            RemoveCategory("Plugin Mods");
-            RemoveButton(GetCategory("Main"), "Plugin Mods");
+            Buttons.RemoveCategory("Plugin Mods");
+            Buttons.RemoveButton(Buttons.GetCategory("Main"), "Plugin Mods");
         }
 
         // This runs every frame before the mods
@@ -72,8 +74,8 @@ namespace StupidPlugin
         {
             if (rightTrigger > 0.5f)
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * Movement.flySpeed;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * Movement.FlySpeed;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
     }
