@@ -1,4 +1,4 @@
-# Seralyth Plugin Template
+# Seralyth Plugin Template (i obj do not own seralyth menu)
 Seralyth Plugin Template is a template used for developing custom plugins for Seralyth Menu. This plugin template is meant for plugin developers, if you don't know what you're doing stick to the plugin library.
 
 ## Do I need permission to use this?
