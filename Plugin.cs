@@ -1,11 +1,11 @@
-﻿using static iiMenu.Menu.Main;
-using iiMenu.Classes.Menu;
-using iiMenu.Mods;
+﻿using static Seralyth.Menu.Main;
+using Seralyth.Classes.Menu;
+using Seralyth.Mods;
 using UnityEngine;
-using iiMenu.Managers;
-using iiMenu.Menu;
+using Seralyth.Managers;
+using Seralyth.Menu;
 
-namespace StupidPlugin
+namespace SeralythPlugin
 {
     public class Plugin
     {
